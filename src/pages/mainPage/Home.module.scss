@@ -31,9 +31,7 @@ p {
 
 .slideBox {
   display: flex;
-  width: calc(
-    300px * 10
-  ); // width : total number of slides (10) * individual slide width (300px)
+  width: 100%; // width : total number of slides (10) * individual slide width (300px)
   &:hover {
     animation-play-state: paused;
   }
@@ -41,7 +39,6 @@ p {
 
 .slide {
   height: 150px;
-  width: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;

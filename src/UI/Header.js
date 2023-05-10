@@ -6,6 +6,8 @@ import { authActions } from "../store/auth";
 import axios from "axios";
 import { BASE_URL } from "../URL/url";
 import { removeCookie } from "../cookie/cookie";
+import { Input, InputGroup, InputRightAddon } from "@chakra-ui/react";
+import { GoSearch } from "react-icons/go";
 
 const Headar = () => {
   const navigate = useNavigate();
@@ -69,7 +71,12 @@ const Headar = () => {
             ) : null}
           </div>
         </div>
+
         <div className="navItems">
+          <InputGroup marginRight="10px">
+            <Input placeholder="아이돌을 검색해보세요." fontSize="0.9rem" />
+            <InputRightAddon children={<GoSearch />} padding="0px 8px" />
+          </InputGroup>
           <div className="navItem">
             {isAdmin ? (
               <>

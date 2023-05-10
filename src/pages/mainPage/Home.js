@@ -212,7 +212,7 @@ const Home = () => {
                           className={styles.artistImage}
                           src={data.idol_profile}
                           alt="아티스트 이미지"
-                        ></img>
+                        />
                         <h3 className={styles.artistName}>
                           {data.idol_name_kr}
                         </h3>

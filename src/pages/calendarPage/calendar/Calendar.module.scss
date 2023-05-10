@@ -61,7 +61,10 @@
   justify-content: center;
   align-items: center;
   @media (max-width: 376px) {
-    width: 12vw;
+    width: 18vw;
+  }
+  @media (max-width: 768px) {
+    width: 18vw;
   }
 }
 .icons {
@@ -69,16 +72,17 @@
 }
 
 .calendarContainer {
-  margin: 20px;
-  height: 100%;
+  margin: 10px;
+  height: 90%;
   font-family: "Jua", sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   box-sizing: border-box;
 
   .controlContainer {
+    margin: auto 5vw;
     display: flex;
     align-content: center;
     flex-direction: row;
@@ -172,15 +176,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    // width: 50vw;
-    // height: 50vh;
+    width: 100%;
+    margin: 0 auto;
   }
   .calendarTbody {
+    width: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
   }
+  .calendarTr {
+    margin: 0 auto;
 
-  tr {
     display: flex;
     flex-direction: row;
   }
@@ -189,14 +197,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    //border: 1px solid gray;
     width: 10vw;
     height: 10vh;
   }
   span {
-    margin-top: 10px;
     font-weight: 600;
-    //border: 1px solid red;
   }
 }
 
@@ -277,29 +282,6 @@
   display: flex;
 }
 
-// .selected {
-//   position: relative;
-// }
-// // .selected::before {
-// //   content: "";
-// //   display: absolute;
-// //   width: 15px;
-// //   height: 15px;
-// //   border-radius: 50%;
-// //   background-color: rgb(222, 41, 228);
-// //   z-index: -1;
-// //   position: absolute;
-// //   left: 1px;
-// // }
-// .selected::before {
-//   content: "";
-//   position: absolute;
-//   width: 15px;
-//   height: 15px;
-//   border-radius: 50%;
-//   background-color: rgb(222, 41, 228);
-//   z-index: -1;
-// }
 .dayContent {
   width: 30px;
   height: 30px;
@@ -313,61 +295,14 @@
 
 /* 모바일 가로, 테블릿 세로 (해상도 ~ 479px)*/
 
-// @media all and (max-width: 768px) {
-//   .calendarContainer {
-//     display: flex;
-
-//     .categoryContainer {
-//       margin-top: 20px;
-//       display: flex;
-//       flex-direction: row;
-//       justify-content: space-around;
-//       margin: 10px;
-//       margin-bottom: 0px;
-//     }
-
-//     .categoryBtn {
-//       padding: 3px;
-//       border-radius: 10%;
-//       background: none;
-//       font-family: "Jua", sans-serif;
-//       border: none;
-//     }
-
-//     .categoryBtn:nth-child(1) {
-//       background-color: #443c68;
-//     }
-
-//     .categoryBtn:nth-child(2) {
-//       background-color: #f16767;
-//     }
-
-//     .categoryBtn:nth-child(3) {
-//       background-color: #609966;
-//     }
-
-//     .categoryBtn:nth-child(4) {
-//       background-color: #e7b10a;
-//     }
-
-//     .categoryBtn:nth-child(5) {
-//       background-color: #537fe7;
-//     }
-
-//     .categoryBtn:nth-child(6) {
-//       background-color: black;
-//       color: white;
-//     }
-
-//     td {
-//       cursor: pointer;
-//     }
-//   }
-// }
+@media (max-width: 768px) {
+  .calendarContainer {
+    td {
+      width: 13vw;
+    }
+    font-size: 1.1rem;
+  }
+}
 
 // @media (max-width: 376px) {
 // }
-
-td {
-  cursor: pointer;
-}

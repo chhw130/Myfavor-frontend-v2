@@ -10,6 +10,15 @@ export const instance = axios.create({
   withCredentials: true,
 });
 
+/**회원가입 */
+
+export const postSignUp = (signUpInform) =>
+  instance.post(`/users/`).then((res) => res.data);
+
+/**로그인 */
+export const postLogin = (loginInform) =>
+  instance.post(`/users/login/`, loginInform).then((res) => res.data);
+
 /**메인 페이지 */
 export const getIdolSchedules = () =>
   instance.get(`/idols/schedules/`).then((response) => response.data);

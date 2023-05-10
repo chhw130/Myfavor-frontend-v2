@@ -157,7 +157,7 @@ const Calendar = ({ todayDate, setSidebarOpen, prevDate, nextDate }) => {
 
     for (week; week <= lastWeek; week++) {
       result = result.concat(
-        <tr key={week}>
+        <tr key={week} className={styles.calendarTr}>
           {Array(7)
             .fill(0)
             // eslint-disable-next-line
@@ -313,7 +313,7 @@ const Calendar = ({ todayDate, setSidebarOpen, prevDate, nextDate }) => {
       </div>
       <table className={styles.calendarTable}>
         <tbody className={styles.calendarTbody}>
-          <tr>
+          <tr className={styles.calendarTr}>
             <td className="week">일</td>
             <td className="week">월</td>
             <td className="week">화</td>

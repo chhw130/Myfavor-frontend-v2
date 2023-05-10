@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import styles from "./CalendarPage.module.scss";
 import Sidebar from "./Sidebar";
 import { useQuery } from "react-query";
-import { axiosIdolSchedule } from "../../api";
 import Calendar from "./calendar/Calendar";
 
 import {
@@ -18,17 +17,19 @@ import { useSelector } from "react-redux";
 import Modal from "../../UI/Modal";
 import ReportSchedule from "../FormPage/IdolForm/ReportSchedule";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { specificIdolSchedule } from "../../axios-settings/Axios";
+import {
+  specificIdolInform,
+  specificIdolSchedule,
+} from "../../axios-settings/Axios";
 
 const CalendarData = () => {
   const { idolId } = useParams();
   const userPick = useSelector((state) => state.auth.authState.pick.idolPk);
   const [reportModal, setReportModal] = useState(false);
-  const [idolName, setIdolName] = useState({});
 
   // 아이돌 데이터
-  const { data: idData } = useQuery(["info", idolId], () =>
-    specificIdolSchedule(idolId)
+  const { data: idolData } = useQuery(["info", idolId], () =>
+    specificIdolInform(idolId)
   );
 
   // 스케줄 데이터
@@ -54,15 +55,15 @@ const CalendarData = () => {
   const two_after_slice = two_after.toISOString().slice(0, 10);
   const three_after_slice = three_after.toISOString().slice(0, 10);
 
-  const oneType = idData?.filter(
+  const oneType = idolSchedule?.filter(
     (item) => item.when.slice(0, 10) === one_after_slice
   );
 
-  const twoType = idData?.filter(
+  const twoType = idolSchedule?.filter(
     (item) => item.when.slice(0, 10) === two_after_slice
   );
 
-  const threeType = idData?.filter(
+  const threeType = idolSchedule?.filter(
     (item) => item.when.slice(0, 10) === three_after_slice
   );
 
@@ -132,8 +133,12 @@ const CalendarData = () => {
       <div className={styles.calendar}>
         <div className={styles.calendarWrap}>
           <div className={styles.idolName}>
-            <p>{idolName.idolNameKr}</p>
-            {/* {idolName.group ? <p>{idolName.group}</p> : null} */}
+            <p>{idolData?.idol_name_kr}</p>
+            {idolData?.Girl_group ? (
+              <p>{idolData?.Girl_group}</p>
+            ) : (
+              <p>{idolData?.Boy_group}</p>
+            )}
           </div>
           <Calendar
             todayDate={todayDate}

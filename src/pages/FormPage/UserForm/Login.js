@@ -5,8 +5,9 @@ import choeImg from "../../../Img/logo_main.png";
 import { useNavigate } from "react-router-dom";
 import Layout from "../../../UI/Layout";
 import axios from "axios";
-import { getCookie, setCookie } from "../../../cookie/cookie";
-import { BASE_URL } from "../../../URL/url";
+import { Button, ButtonGroup, Input } from "@chakra-ui/react";
+import { postLogin } from "../../../axios-settings/Axios";
+import { useMutation } from "react-query";
 
 axios.defaults.withCredentials = true;
 
@@ -22,25 +23,13 @@ const LogIn = () => {
   } = useForm();
   const navigate = useNavigate();
 
+  const { mutateAsync: loginHandler } = useMutation((loginData) =>
+    postLogin(loginData)
+  );
+
   /**로그인 form을 제출했을 때*/
-  const onSubmit = async (data) => {
-    await axios
-      .post(`${BASE_URL}users/login/`, data, {
-        withCredentials: true,
-        headers : {
-          "X-CSRFTOKEN" : getCookie("csrftoken") || "",
-        }
-      })
-      .then((response) => {
-        setIsValid(false);
-        const responseData = response.data;
-        setCookie("isLogin", responseData);
-        navigate("/");
-        window.location.reload();
-      })
-      .catch((error) => {
-        setIsValid(error.response.data);
-      });
+  const onSubmit = async (loginData) => {
+    await loginHandler(loginData);
   };
 
   return (
@@ -49,7 +38,7 @@ const LogIn = () => {
         <form onSubmit={handleSubmit(onSubmit)} className={styles.logInForm}>
           <img className={styles.mainImg} src={choeImg} alt="" />
           <h1>로그인</h1>
-          <input
+          <Input
             className={styles.logInInput}
             name="email"
             placeholder="UserEmail"
@@ -57,7 +46,7 @@ const LogIn = () => {
               required: "ID를 입력해주세요.",
             })}
           />
-          <input
+          <Input
             className={styles.logInInput}
             name="password"
             placeholder="Password"
@@ -73,26 +62,37 @@ const LogIn = () => {
               (isValid.detail && <p>계정이 없습니다.</p>)}
           </div>
           <div className={styles.goSignUp}>
-            <button
+            <Button
+              bg="transparent"
               type="button"
               onClick={() => {
                 navigate("/signup");
               }}
             >
               Not user?
-            </button>
+            </Button>
           </div>
-          <div className={styles.buttonDiv}>
-            <button
+          <ButtonGroup marginTop="30px">
+            <Button
+              w="150px"
+              h="50px"
               onClick={() => {
                 navigate("/");
               }}
               type="button"
             >
               홈으로
-            </button>
-            <button type="submit">로그인</button>
-          </div>
+            </Button>
+            <Button
+              w="150px"
+              h="50px"
+              type="submit"
+              color="white"
+              colorScheme="twitter"
+            >
+              로그인
+            </Button>
+          </ButtonGroup>
         </form>
       </div>
     </Layout>
