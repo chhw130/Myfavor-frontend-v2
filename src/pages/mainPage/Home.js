@@ -1,6 +1,5 @@
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
-import { axiosIdol, axiosSchedules } from "../../api";
 import styles from "./Home.module.scss";
 import {
   faBroadcastTower,
@@ -12,21 +11,18 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
+import { getIdolList, getIdolSchedules } from "../../axios-settings/Axios";
 
 const Home = () => {
-  const { isLoding: idolLoding, data: idolData } = useQuery("idol", axiosIdol);
+  const { data: schedulesData } = useQuery("schedules", getIdolSchedules);
+  const { isLoding: idolLoding, data: idolData } = useQuery(
+    "idol",
+    getIdolList
+  );
 
   const slideImage = idolData?.slice(0, 24);
 
-  const { isLoding: schedulesLoding, data: schedulesData } = useQuery(
-    "schedules",
-    axiosSchedules
-  );
-
-  //console.log(schedulesData);
-
   const slideBanner = schedulesData?.slice(0, 10);
-  //console.log(slideBanner);
 
   // 슬라이드의 가로 위치를 결정하며, 변경되면 슬라이드가 움직인다
   const [translateX, setTranslateX] = useState(0);

@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import styles from "./CalendarPage.module.scss";
 import Sidebar from "./Sidebar";
 import { useQuery } from "react-query";
-import { axiosIdolSchedule, axiosSchedule } from "../../api";
+import { axiosIdolSchedule } from "../../api";
 import Calendar from "./calendar/Calendar";
 
 import {
@@ -18,6 +18,7 @@ import { useSelector } from "react-redux";
 import Modal from "../../UI/Modal";
 import ReportSchedule from "../FormPage/IdolForm/ReportSchedule";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { specificIdolSchedule } from "../../axios-settings/Axios";
 
 const CalendarData = () => {
   const { idolId } = useParams();
@@ -26,24 +27,15 @@ const CalendarData = () => {
   const [idolName, setIdolName] = useState({});
 
   // 아이돌 데이터
-  const { isLoding: idDataLoding, data: idData } = useQuery(
-    ["info", idolId],
-    () => {
-      return axiosSchedule(idolId);
-    }
+  const { data: idData } = useQuery(["info", idolId], () =>
+    specificIdolSchedule(idolId)
   );
 
   // 스케줄 데이터
-  useEffect(() => {
-    axiosIdolSchedule(idolId).then((res) => {
-      setIdolName({
-        idolNameKr: res.idol_name_kr,
-        group: res.Girl_group ? res.Girl_group : res.Boy_group,
-      });
-    });
-  }, [idolId]);
+  const { data: idolSchedule } = useQuery(["idolSchedule", idolId], () =>
+    specificIdolSchedule(idolId)
+  );
 
-  // 다가오는 스케줄
   // 3일 이후 날짜 구하기
 
   const today = new Date();
@@ -141,7 +133,7 @@ const CalendarData = () => {
         <div className={styles.calendarWrap}>
           <div className={styles.idolName}>
             <p>{idolName.idolNameKr}</p>
-            {idolName.group ? <p>{idolName.group}</p> : null}
+            {/* {idolName.group ? <p>{idolName.group}</p> : null} */}
           </div>
           <Calendar
             todayDate={todayDate}

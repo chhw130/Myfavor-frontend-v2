@@ -1,8 +1,7 @@
 import { idolDataSlice } from "./idolData";
 import { reportSchedulesSlice } from "./reportSchedules";
-
+import { authSlice } from "./auth";
 const { configureStore } = require("@reduxjs/toolkit");
-const { authSlice } = require("./auth");
 
 const store = configureStore({
   reducer: {

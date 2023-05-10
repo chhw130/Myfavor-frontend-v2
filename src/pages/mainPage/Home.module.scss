@@ -13,7 +13,7 @@ p {
 }
 .mainVideo {
   width: 100vw;
-  //height: 100vh;
+  height: 500px;
   object-fit: cover;
   position: sticky;
   top: 0;
@@ -95,7 +95,7 @@ p {
   background-color: white;
 }
 article {
-  width: 80vw;
+  width: 90%;
   max-width: 950px;
   display: flex;
   align-items: center;
@@ -109,13 +109,9 @@ article {
   margin-top: 5rem;
 }
 .artistImage {
-  max-width: 220px;
-  width: 16.5vw;
-  height: 16.5vw;
+  width: 200px;
+  height: 200px;
   border-radius: 4vw;
-  // width: 215px;
-  // height: 215px;
-  // border-radius: 70px;
   object-fit: cover;
   object-position: center;
   cursor: pointer;
@@ -162,8 +158,10 @@ article {
 }
 .mainTitle {
   margin-top: 4vh;
+  width: 100%;
   p {
     font-family: Cafe24Ssurround;
+    margin: 10vh 0;
     font-size: 3.5vw;
     text-align: center;
     line-height: 2.5vh;
@@ -179,14 +177,20 @@ article {
 }
 
 @media (max-width: 768px) {
-  // .mainTitle {
-  //   p {
-  //     font-size: 3.5vw;
-  //     line-height: 2vh;
-  //   }
-  // }
   .subTitle {
     margin-top: 2.5vw;
+  }
+  .mainTitle {
+    margin-top: 4vh;
+    width: 100%;
+    p {
+      font-family: Cafe24Ssurround;
+      font-size: 4.5vw;
+      margin: 20px 0;
+      text-align: center;
+      line-height: 2.5vh;
+      letter-spacing: -1.55px;
+    }
   }
   .artistFontWrapper {
     margin-top: 2.5vw;
@@ -236,9 +240,10 @@ article {
     cursor: pointer;
   }
 
-  .mainTitle {
-    line-height: 1vh;
-  }
+  // .mainTitle {
+  //   line-height: 1vh;
+  // }
+
   .subTitle {
     margin-top: 2.5vw;
   }

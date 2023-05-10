@@ -8,16 +8,21 @@ import store from "./store/store";
 
 import { QueryClientProvider, QueryClient } from "react-query";
 import { BrowserRouter } from "react-router-dom";
+import { ReactQueryDevtools } from "react-query/devtools";
+import { ChakraProvider } from "@chakra-ui/react";
+
 const Client = new QueryClient();
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  /**리액트 redux provider store저장소 참조시켜주기 */
 
+root.render(
   <Provider store={store}>
     <QueryClientProvider client={Client}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <ChakraProvider>
+        <BrowserRouter>
+          <ReactQueryDevtools />
+          <App />
+        </BrowserRouter>
+      </ChakraProvider>
     </QueryClientProvider>
   </Provider>
 );
