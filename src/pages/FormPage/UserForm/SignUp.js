@@ -69,7 +69,8 @@ const SignUp = () => {
         <div className={styles.signUp}>
           <Image
             w="300px"
-            margin="100px auto 50px auto"
+            margin="0 auto"
+            padding="30px"
             alt=""
             src="https://velog.velcdn.com/images/view_coding/post/6e4d7220-8bc8-4e88-9d4b-f3dd9e09b523/image.png"
           />
@@ -207,25 +208,30 @@ const SignUp = () => {
             </div>
 
             <div className={styles.typeDiv}>
-              <label htmlFor="email">Email</label>
+              <label htmlFor="email">닉네임</label>
               <Input
-                id="email"
+                id="nickname"
                 placeholder="이메일을 입력하세요"
-                {...register("email", {
-                  required: "필수 정보입니다.",
-                  pattern: {
-                    // eslint-disable-next-line
-                    value:
-                      /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i,
-                    message: "이메일 형식에 맞지 않습니다.",
+                {...register("nickname", {
+                  required: {
+                    value: true,
+                    message: "필수 정보입니다.",
                   },
                   maxLength: {
-                    value: 40,
-                    message: "40자까지 입력가능합니다.",
+                    value: 15,
+                    message: "15자까지 입력가능합니다.",
+                  },
+                  minLength: {
+                    value: 3,
+                    message: "2자 이상 입력하세요.",
+                  },
+                  pattern: {
+                    value: /^[0-9|a-z|A-Z|ㄱ-ㅎ|ㅏ-ㅣ|가-힣]*$/,
+                    message: "공백을 제거해 주세요.",
                   },
                 })}
               />
-              {errors?.email && <p>{errors.email.message}</p>}
+              {errors.nickname && <p>{errors.nickname.message}</p>}
             </div>
             <div className={styles.typeDiv}>
               <label>최애 등록</label>

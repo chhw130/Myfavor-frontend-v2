@@ -55,6 +55,7 @@
   }
 }
 .nextSchedule {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -96,14 +97,17 @@
 }
 
 .nextSchedule_List {
+  width: 80%;
   list-style: none;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   padding: 0 2vw;
 }
 .nextScheduleItem {
   min-width: 340px;
+  width: 70%;
   box-sizing: border-box;
   background-color: #efeff1;
   padding: 20px 15px;
@@ -127,8 +131,7 @@
   width: 40px;
   height: 40px;
 }
-// @media (max-width: 376px) {
-// }
+
 .reportBtn {
   align-self: flex-end;
   background-color: #4856ff;
@@ -143,7 +146,22 @@
 }
 
 @media (max-width: 768px) {
-  .nextSchedule {
-    width: 80%;
+  .calendarWrap {
+    padding-top: 75px;
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .idolName {
+      p {
+        font-size: 30px;
+        &:nth-child(2) {
+          font-size: 10px;
+          line-height: 60px;
+          color: grey;
+        }
+      }
+    }
   }
 }

@@ -13,7 +13,7 @@ export const instance = axios.create({
 /**회원가입 */
 
 export const postSignUp = (signUpInform) =>
-  instance.post(`/users/`).then((res) => res.data);
+  instance.post(`/users/`, signUpInform).then((res) => res.data);
 
 /**로그인 */
 export const postLogin = (loginInform) =>

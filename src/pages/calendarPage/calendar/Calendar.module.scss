@@ -95,6 +95,7 @@
 
   .title {
     font-size: 2rem;
+    margin: auto 10px;
   }
 
   .today {
@@ -118,6 +119,7 @@
     font-family: "Jua", sans-serif;
     border-radius: 50%;
     border: none;
+    margin: auto 0;
   }
 
   .categoryContainer {
@@ -301,8 +303,41 @@
       width: 13vw;
     }
     font-size: 1.1rem;
+
+    .title {
+      font-size: 1.8rem;
+      margin: auto 5px;
+    }
+    .prevBtn {
+      font-size: 1rem;
+    }
+
+    .nextBtn {
+      font-size: 1rem;
+    }
+    .todayBtn {
+      width: 30px;
+      height: 30px;
+      margin: auto 0;
+      font-family: "Jua", sans-serif;
+      border-radius: 50%;
+      border: none;
+    }
   }
 }
 
-// @media (max-width: 376px) {
-// }
+@media (max-width: 376px) {
+  .calendarContainer {
+    .title {
+      font-size: 1.3rem;
+      margin: auto 5px;
+    }
+    .prevBtn {
+      font-size: 0.8rem;
+    }
+
+    .nextBtn {
+      font-size: 0.8rem;
+    }
+  }
+}
