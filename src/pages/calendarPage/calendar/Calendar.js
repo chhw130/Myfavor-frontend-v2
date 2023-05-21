@@ -1,4 +1,3 @@
-// import "./Calendar.css";
 import styles from "./Calendar.module.scss";
 import { fetchDayIdolSchedule, fetchMonthData } from "../../../URL/url";
 import { useEffect, useState } from "react";

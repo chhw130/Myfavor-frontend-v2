@@ -3,6 +3,7 @@
 
 
 URL/
+.url.js
 
 # dependencies
 /node_modules
